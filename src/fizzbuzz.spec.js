@@ -10,7 +10,8 @@ describe('fizzbuzz', () => {
         {input: 6, output: "fizz"},
         {input: 5, output: "buzz"},
         {input: 10, output: "buzz"},
-        {input: 3*5, output: "fizzbuzz"}
+        {input: 3*5, output: "fizzbuzz"},
+        {input: 7, output: "zuzz"}
     ].forEach(({input, output}) => {
         it(`should turn ${input} to "${output}"`, () => {
             expect(fizzbuzz(input)).toBe(output)
