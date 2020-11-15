@@ -1,32 +1,34 @@
-class FizzStrategy {
+class FizzBuzzStrategyTemplate {
+    constructor(divisor, representative) {
+        this.divisor = divisor
+        this.representative = representative
+    }
+
     handle(num) {
-        if (num % 3 === 0) {
-            return 'fizz'
+        if (num % this.divisor === 0) {
+            return this.representative;
         }
         return ''
+    }
+}
+class FizzBuzzStrategyFactory {
+    create(divisor, representative) {
+        return new FizzBuzzStrategyTemplate (divisor, representative)
     }
 }
 
-class BuzzStrategy {
-    handle(num) {
-        if (num % 5 === 0) {
-            return 'buzz'
-        }
-        return ''
-    }
-}
 
 const fizzbuzz = (num) => {
+    const factory = new FizzBuzzStrategyFactory();
     let result = '';
-    const fizzStrategy = new FizzStrategy();
+    const fizzStrategy = factory.create(3, 'fizz');
     result += fizzStrategy.handle(num)
-    const buzzStrategy = new BuzzStrategy();
+    const buzzStrategy = factory.create(5, 'buzz');
     result += buzzStrategy.handle(num);
+    const zuzzStrategy = factory.create(7, 'zuzz');
+    result += zuzzStrategy.handle(num);
     if (result !== '') {
         return result;
-    }
-    if (num % 7 === 0) {
-        return "zuzz"
     }
     return String(num)
 }
