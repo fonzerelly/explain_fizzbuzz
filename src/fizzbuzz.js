@@ -1,8 +1,5 @@
 const fizzbuzz = (num) => {
-    if (num === 2) {
-        return "2"
-    }
-    return "1"
+    return String(num)
 }
 
 module.exports = {
